@@ -92,7 +92,9 @@ class _ScaleneHomeState extends State<ScaleneHome> {
     });
     // set "last open date" to today
     SharedPreferences.getInstance().then((prefs) {
-      prefs.setString("last_open_date", DateTime.now().toString());
+      DateTime now = DateTime.now();
+      DateTime todayMidnight = DateTime(now.year, now.month, now.day, 0, 0, 0, 0);
+      prefs.setString("last_open_date", todayMidnight.toString());
       // for debug, we'll set it to a week ago
       //prefs.setString("last_open_date", DateTime.now().subtract(const Duration(days: 7)).toString());
     });
